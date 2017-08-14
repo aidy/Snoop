@@ -1,5 +1,6 @@
 require 'rack'
 require 'cgi'
+require 'mechanize'
 
 class WebInterfaceThread < CinchThread
   def initialize(bot)
@@ -36,6 +37,13 @@ class WebInterfaceThread < CinchThread
       @bot.channels.each{ | channel |
         if channel.name == tchannel
           channel.send(Cinch::Formatting.format(colour,message))
+          url = Settings.slack.webhook
+          agent = Mechanize.new
+          if Settings.slack.channel == tchannel
+            agent.post(url, '{"text": "' + message + '"}', 'Content-Type' => 'application/json')
+          else
+            agent.post(url, '{"text": "' + message + '", "channel": "'+ tchannel +'"}', 'Content-Type' => 'application/json')
+          end
         end
       }
 
