@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative '../lib/bot.rb'
+require 'bot.rb'
 require 'rubygems'
 require 'optparse'
 require 'bundler/setup'

@@ -1,6 +1,6 @@
-require_relative 'cinchplugin.rb'
-require_relative 'cinchthread.rb'
-require_relative 'settings.rb'
+require 'cinchplugin.rb'
+require 'cinchthread.rb'
+require 'settings.rb'
 
 module Snoop
   class Bot

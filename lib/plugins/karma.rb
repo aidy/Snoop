@@ -9,7 +9,7 @@ class Karma < CinchPlugin
 
   def initialize(*args)
     super
-    @scores_file = "/tmp/karma.json"
+    @scores_file = Settings.karma.file
     if File.exist? @scores_file
       File.open(@scores_file, "r") do |f|
         @users = JSON.parse(f.read)
